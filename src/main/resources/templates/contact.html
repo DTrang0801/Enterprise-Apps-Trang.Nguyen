@@ -24,26 +24,26 @@
                 <div class="mb-4">
                     <label class="block text-gray-700 font-semibold mb-2">Naam</label>
                     <input type="text" th:field="*{naam}"
-                        class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500">
+                        class="w-full border rounded p-2 focus:ring-2 focus:ring-purple-500">
                     <p th:if="${#fields.hasErrors('naam')}" th:errors="*{naam}" class="text-red-600 text-sm mt-1"></p>
                 </div>
 
                 <div class="mb-4">
                     <label class="block text-gray-700 font-semibold mb-2">E-mail</label>
                     <input type="email" th:field="*{email}"
-                        class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500">
+                        class="w-full border rounded p-2 focus:ring-2 focus:ring-purple-500">
                     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-red-600 text-sm mt-1"></p>
                 </div>
 
                 <div class="mb-6">
                     <label class="block text-gray-700 font-semibold mb-2">Bericht</label>
                     <textarea th:field="*{bericht}" rows="5"
-                        class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500"></textarea>
+                        class="w-full border rounded p-2 focus:ring-2 focus:ring-purple-500"></textarea>
                     <p th:if="${#fields.hasErrors('bericht')}" th:errors="*{bericht}" class="text-red-600 text-sm mt-1"></p>
                 </div>
 
                 <button type="submit"
-                    class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 font-semibold">Versturen</button>
+                    class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 font-semibold">Versturen</button>
             </form>
         </div>
     </main>

@@ -11,7 +11,7 @@
 
         <div class="bg-white rounded-lg shadow overflow-hidden">
             <table class="w-full">
-                <thead class="bg-blue-800 text-white">
+                <thead class="bg-purple-800 text-white">
                     <tr>
                         <th class="p-3 text-left">Titel</th>
                         <th class="p-3 text-left">Organisatie</th>
@@ -24,7 +24,7 @@
                         <td class="p-3" th:text="${event.organisatie}">Organisatie</td>
                         <td class="p-3 text-center">
                             <a th:href="@{/details/{id}(id=${event.id})}"
-                                class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 text-sm">Details</a>
+                                class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700 text-sm">Details</a>
                         </td>
                     </tr>
                     <tr th:if="${#lists.isEmpty(events)}">
