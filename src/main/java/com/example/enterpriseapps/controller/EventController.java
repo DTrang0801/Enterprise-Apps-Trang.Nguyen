@@ -5,12 +5,15 @@ import com.example.enterpriseapps.model.Location;
 import com.example.enterpriseapps.repository.EventRepository;
 import com.example.enterpriseapps.repository.LocationRepository;
 import jakarta.validation.Valid;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import java.beans.PropertyEditorSupport;
 import java.util.List;
 
 @Controller
@@ -22,6 +25,20 @@ public class EventController {
     public EventController(EventRepository eventRepository, LocationRepository locationRepository) {
         this.eventRepository = eventRepository;
         this.locationRepository = locationRepository;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(Location.class, new PropertyEditorSupport() {
+            @Override
+            public void setAsText(String text) {
+                if (text == null || text.isEmpty()) {
+                    setValue(null);
+                } else {
+                    setValue(locationRepository.findById(Long.parseLong(text)).orElse(null));
+                }
+            }
+        });
     }
 
     @GetMapping("/")

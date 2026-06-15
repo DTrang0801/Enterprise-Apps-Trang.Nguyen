@@ -52,7 +52,7 @@
 
                         <div>
                             <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Locatie</label>
-                            <select th:field="*{locatie.id}"
+                            <select th:field="*{locatie}"
                                 class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-gray-900 text-sm focus:ring-2 focus:ring-violet-500/20 focus:border-violet-400 outline-none transition-all">
                                 <option value="">-- Selecteer een locatie --</option>
                                 <option th:each="loc : ${locations}" th:value="${loc.id}" th:text="${loc.naam + ' - ' + loc.adres}">Locatie</option>
