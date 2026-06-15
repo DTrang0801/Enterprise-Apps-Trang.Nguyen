@@ -14,6 +14,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.beans.PropertyEditorSupport;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -56,14 +57,33 @@ public class EventController {
     }
 
     @PostMapping("/new")
-    public String newEventSubmit(@Valid @ModelAttribute("event") Event event,
-                                  BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
+    public String newEventSubmit(@RequestParam String tijdstip,
+                                  @RequestParam String titel,
+                                  @RequestParam String omschrijving,
+                                  @RequestParam String organisatie,
+                                  @RequestParam String contactEmail,
+                                  @RequestParam Long locatie,
+                                  Model model) {
+        try {
+            Event event = new Event();
+            event.setTijdstip(LocalDateTime.parse(tijdstip));
+            event.setTitel(titel);
+            event.setOmschrijving(omschrijving);
+            event.setOrganisatie(organisatie);
+            event.setContactEmail(contactEmail);
+            
+            Location loc = locationRepository.findById(locatie)
+                    .orElseThrow(() -> new IllegalArgumentException("Locatie niet gevonden"));
+            event.setLocatie(loc);
+            
+            eventRepository.save(event);
+            return "redirect:/";
+        } catch (Exception e) {
+            model.addAttribute("event", new Event());
             model.addAttribute("locations", locationRepository.findAll());
+            model.addAttribute("error", "Er is een fout opgetreden: " + e.getMessage());
             return "new-event";
         }
-        eventRepository.save(event);
-        return "redirect:/";
     }
 
     @GetMapping("/details/{id}")
