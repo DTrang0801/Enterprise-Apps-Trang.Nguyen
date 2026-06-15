@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout :: head('Nieuw evenement - NGO Anderlecht')}"></head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <nav th:replace="~{layout :: nav}"></nav>
+
+    <main class="container mx-auto p-6 flex-grow">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Nieuw evenement toevoegen</h1>
+
+        <div class="bg-white rounded-lg shadow p-6 max-w-2xl">
+            <form th:action="@{/new}" th:object="${event}" method="post">
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">Tijdstip</label>
+                    <input type="datetime-local" th:field="*{tijdstip}"
+                        class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500">
+                    <p th:if="${#fields.hasErrors('tijdstip')}" th:errors="*{tijdstip}" class="text-red-600 text-sm mt-1"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">Titel</label>
+                    <input type="text" th:field="*{titel}"
+                        class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500">
+                    <p th:if="${#fields.hasErrors('titel')}" th:errors="*{titel}" class="text-red-600 text-sm mt-1"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">Omschrijving</label>
+                    <textarea th:field="*{omschrijving}" rows="4"
+                        class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500"></textarea>
+                    <p th:if="${#fields.hasErrors('omschrijving')}" th:errors="*{omschrijving}" class="text-red-600 text-sm mt-1"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">Organisatie</label>
+                    <input type="text" th:field="*{organisatie}"
+                        class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500">
+                    <p th:if="${#fields.hasErrors('organisatie')}" th:errors="*{organisatie}" class="text-red-600 text-sm mt-1"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-semibold mb-2">E-mail contactpersoon</label>
+                    <input type="email" th:field="*{contactEmail}"
+                        class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500">
+                    <p th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}" class="text-red-600 text-sm mt-1"></p>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-semibold mb-2">Locatie</label>
+                    <select th:field="*{locatie.id}"
+                        class="w-full border rounded p-2 focus:ring-2 focus:ring-blue-500">
+                        <option value="">-- Selecteer een locatie --</option>
+                        <option th:each="loc : ${locations}" th:value="${loc.id}"
+                            th:text="${loc.naam + ' - ' + loc.adres}">Locatie</option>
+                    </select>
+                    <p th:if="${#fields.hasErrors('locatie')}" th:errors="*{locatie}" class="text-red-600 text-sm mt-1"></p>
+                </div>
+
+                <div class="flex gap-4">
+                    <button type="submit"
+                        class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 font-semibold">Opslaan</button>
+                    <a th:href="@{/}"
+                        class="bg-gray-400 text-white px-6 py-2 rounded-lg hover:bg-gray-500 font-semibold">Annuleren</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer th:replace="~{layout :: footer}"></footer>
+</body>
+
+</html>

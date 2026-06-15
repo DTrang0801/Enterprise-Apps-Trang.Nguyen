@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout :: head('Details - NGO Anderlecht')}"></head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <nav th:replace="~{layout :: nav}"></nav>
+
+    <main class="container mx-auto p-6 flex-grow">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800" th:text="${event.titel}">Titel</h1>
+
+        <div class="bg-white rounded-lg shadow p-6 max-w-2xl">
+            <div class="mb-4">
+                <h2 class="text-lg font-semibold text-gray-700">Tijdstip</h2>
+                <p class="text-gray-600" th:text="${#temporals.format(event.tijdstip, 'dd/MM/yyyy HH:mm')}">Tijdstip</p>
+            </div>
+
+            <div class="mb-4">
+                <h2 class="text-lg font-semibold text-gray-700">Organisatie</h2>
+                <p class="text-gray-600" th:text="${event.organisatie}">Organisatie</p>
+            </div>
+
+            <div class="mb-4">
+                <h2 class="text-lg font-semibold text-gray-700">Contact e-mail</h2>
+                <p class="text-gray-600">
+                    <a th:href="'mailto:' + ${event.contactEmail}" th:text="${event.contactEmail}"
+                        class="text-blue-600 hover:underline">E-mail</a>
+                </p>
+            </div>
+
+            <div class="mb-4">
+                <h2 class="text-lg font-semibold text-gray-700">Locatie</h2>
+                <p class="text-gray-600" th:text="${event.locatie.naam}">Locatie naam</p>
+                <p class="text-gray-500 text-sm" th:text="${event.locatie.adres}">Adres</p>
+                <p class="text-gray-500 text-sm">
+                    Capaciteit: <span th:text="${event.locatie.capaciteit}">0</span> personen
+                </p>
+            </div>
+
+            <div class="mb-6">
+                <h2 class="text-lg font-semibold text-gray-700">Omschrijving</h2>
+                <p class="text-gray-600" th:text="${event.omschrijving}">Omschrijving</p>
+            </div>
+
+            <a th:href="@{/}"
+                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 font-semibold">Terug naar overzicht</a>
+        </div>
+    </main>
+
+    <footer th:replace="~{layout :: footer}"></footer>
+</body>
+
+</html>
