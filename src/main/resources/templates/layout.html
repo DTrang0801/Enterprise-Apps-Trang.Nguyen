@@ -6,23 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title}">NGO Anderlecht</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
 
 <body>
-    <nav th:fragment="nav" class="bg-purple-800 text-white p-4 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <a th:href="@{/}" class="text-xl font-bold">NGO Anderlecht</a>
-            <div class="space-x-6">
-                <a th:href="@{/}" class="hover:text-purple-200">Home</a>
-                <a th:href="@{/new}" class="hover:text-purple-200">Nieuw evenement</a>
-                <a th:href="@{/about}" class="hover:text-purple-200">Over ons</a>
-                <a th:href="@{/contact}" class="hover:text-purple-200">Contact</a>
+    <nav th:fragment="nav" class="bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900 text-white shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a th:href="@{/}" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-lg font-bold">N</div>
+                <span class="text-xl font-semibold tracking-wide">NGO Anderlecht</span>
+            </a>
+            <div class="flex items-center gap-8">
+                <a th:href="@{/}" class="text-sm font-medium hover:text-purple-200 transition-colors">Home</a>
+                <a th:href="@{/new}" class="text-sm font-medium hover:text-purple-200 transition-colors">Nieuw evenement</a>
+                <a th:href="@{/about}" class="text-sm font-medium hover:text-purple-200 transition-colors">Over ons</a>
+                <a th:href="@{/contact}" class="text-sm font-medium hover:text-purple-200 transition-colors">Contact</a>
             </div>
         </div>
     </nav>
 
-    <footer th:fragment="footer" class="bg-gray-800 text-white text-center p-4 mt-8">
-        <p>&copy; 2026 NGO Anderlecht. Alle rechten voorbehouden.</p>
+    <footer th:fragment="footer" class="bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900 text-white text-center py-6 mt-12">
+        <p class="text-sm opacity-80">&copy; 2026 NGO Anderlecht. Alle rechten voorbehouden.</p>
     </footer>
 </body>
 

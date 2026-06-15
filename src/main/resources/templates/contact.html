@@ -3,48 +3,52 @@
 
 <head th:replace="~{layout :: head('Contact - NGO Anderlecht')}"></head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col">
+<body class="bg-gray-50 min-h-screen flex flex-col">
     <nav th:replace="~{layout :: nav}"></nav>
 
-    <main class="container mx-auto p-6 flex-grow">
-        <h1 class="text-3xl font-bold mb-6 text-gray-800">Contact</h1>
+    <main class="flex-grow container mx-auto px-6 py-10">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Contact</h1>
 
-        <div th:if="${success}" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4 max-w-2xl">
-            <p th:text="${success}">Succesbericht</p>
-        </div>
+            <div th:if="${success}" class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-6">
+                <p th:text="${success}">Succesbericht</p>
+            </div>
 
-        <div th:if="${error}" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 max-w-2xl">
-            <p th:text="${error}">Foutmelding</p>
-        </div>
+            <div th:if="${error}" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+                <p th:text="${error}">Foutmelding</p>
+            </div>
 
-        <div class="bg-white rounded-lg shadow p-6 max-w-2xl">
-            <p class="text-gray-600 mb-6">Heeft u een vraag of opmerking? Stuur ons een bericht via onderstaand formulier.</p>
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+                <p class="text-gray-600 mb-6">Heeft u een vraag of opmerking? Stuur ons een bericht via onderstaand formulier.</p>
 
-            <form th:action="@{/contact}" th:object="${contactMessage}" method="post">
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-semibold mb-2">Naam</label>
-                    <input type="text" th:field="*{naam}"
-                        class="w-full border rounded p-2 focus:ring-2 focus:ring-purple-500">
-                    <p th:if="${#fields.hasErrors('naam')}" th:errors="*{naam}" class="text-red-600 text-sm mt-1"></p>
-                </div>
+                <form th:action="@{/contact}" th:object="${contactMessage}" method="post">
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Naam</label>
+                            <input type="text" th:field="*{naam}"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all">
+                            <p th:if="${#fields.hasErrors('naam')}" th:errors="*{naam}" class="text-red-500 text-sm mt-1"></p>
+                        </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 font-semibold mb-2">E-mail</label>
-                    <input type="email" th:field="*{email}"
-                        class="w-full border rounded p-2 focus:ring-2 focus:ring-purple-500">
-                    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-red-600 text-sm mt-1"></p>
-                </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">E-mail</label>
+                            <input type="email" th:field="*{email}"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all">
+                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-red-500 text-sm mt-1"></p>
+                        </div>
 
-                <div class="mb-6">
-                    <label class="block text-gray-700 font-semibold mb-2">Bericht</label>
-                    <textarea th:field="*{bericht}" rows="5"
-                        class="w-full border rounded p-2 focus:ring-2 focus:ring-purple-500"></textarea>
-                    <p th:if="${#fields.hasErrors('bericht')}" th:errors="*{bericht}" class="text-red-600 text-sm mt-1"></p>
-                </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1.5">Bericht</label>
+                            <textarea th:field="*{bericht}" rows="5"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none transition-all"></textarea>
+                            <p th:if="${#fields.hasErrors('bericht')}" th:errors="*{bericht}" class="text-red-500 text-sm mt-1"></p>
+                        </div>
+                    </div>
 
-                <button type="submit"
-                    class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 font-semibold">Versturen</button>
-            </form>
+                    <button type="submit"
+                        class="mt-6 bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-2.5 rounded-lg hover:from-purple-700 hover:to-indigo-700 font-semibold shadow-md transition-all">Versturen</button>
+                </form>
+            </div>
         </div>
     </main>
 

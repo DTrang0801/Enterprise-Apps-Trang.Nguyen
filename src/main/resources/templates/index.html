@@ -3,41 +3,49 @@
 
 <head th:replace="~{layout :: head('Home - NGO Anderlecht')}"></head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col">
+<body class="bg-gray-50 min-h-screen flex flex-col">
     <nav th:replace="~{layout :: nav}"></nav>
 
-    <main class="container mx-auto p-6 flex-grow">
-        <h1 class="text-3xl font-bold mb-6 text-gray-800">Laatste evenementen</h1>
-
-        <div class="bg-white rounded-lg shadow overflow-hidden">
-            <table class="w-full">
-                <thead class="bg-purple-800 text-white">
-                    <tr>
-                        <th class="p-3 text-left">Titel</th>
-                        <th class="p-3 text-left">Organisatie</th>
-                        <th class="p-3 text-center">Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="event : ${events}" class="border-b hover:bg-gray-50">
-                        <td class="p-3" th:text="${event.titel}">Titel</td>
-                        <td class="p-3" th:text="${event.organisatie}">Organisatie</td>
-                        <td class="p-3 text-center">
-                            <a th:href="@{/details/{id}(id=${event.id})}"
-                                class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700 text-sm">Details</a>
-                        </td>
-                    </tr>
-                    <tr th:if="${#lists.isEmpty(events)}">
-                        <td colspan="3" class="p-4 text-center text-gray-500">Geen evenementen gevonden.</td>
-                    </tr>
-                </tbody>
-            </table>
+    <main class="flex-grow">
+        <div class="bg-gradient-to-br from-purple-50 to-indigo-50 py-12">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl font-bold text-gray-900 mb-2">Evenementen</h1>
+                <p class="text-gray-600">Ontdek de laatste activiteiten van onze gemeenschap</p>
+            </div>
         </div>
 
-        <div class="mt-6">
-            <a th:href="@{/new}"
-                class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 font-semibold">Nieuw evenement
-                toevoegen</a>
+        <div class="container mx-auto px-6 py-8">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <table class="w-full">
+                    <thead class="bg-gray-50 border-b border-gray-200">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Titel</th>
+                            <th class="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Organisatie</th>
+                            <th class="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr th:each="event : ${events}" class="hover:bg-purple-50/50 transition-colors">
+                            <td class="px-6 py-4 font-medium text-gray-900" th:text="${event.titel}">Titel</td>
+                            <td class="px-6 py-4 text-gray-600" th:text="${event.organisatie}">Organisatie</td>
+                            <td class="px-6 py-4 text-center">
+                                <a th:href="@{/details/{id}(id=${event.id})}"
+                                    class="inline-block bg-purple-600 text-white px-4 py-1.5 rounded-md hover:bg-purple-700 text-sm font-medium transition-colors">Details</a>
+                            </td>
+                        </tr>
+                        <tr th:if="${#lists.isEmpty(events)}">
+                            <td colspan="3" class="px-6 py-12 text-center text-gray-400">Geen evenementen gevonden.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a th:href="@{/new}"
+                    class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-3 rounded-lg hover:from-purple-700 hover:to-indigo-700 font-semibold shadow-md transition-all">
+                    + Nieuw evenement toevoegen
+                </a>
+            </div>
         </div>
     </main>
 
