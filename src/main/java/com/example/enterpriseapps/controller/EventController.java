@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.beans.PropertyEditorSupport;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -66,7 +67,8 @@ public class EventController {
                                   Model model) {
         try {
             Event event = new Event();
-            event.setTijdstip(LocalDateTime.parse(tijdstip));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+            event.setTijdstip(LocalDateTime.parse(tijdstip, formatter));
             event.setTitel(titel);
             event.setOmschrijving(omschrijving);
             event.setOrganisatie(organisatie);
