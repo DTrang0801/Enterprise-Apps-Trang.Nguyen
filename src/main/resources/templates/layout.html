@@ -7,29 +7,38 @@
     <title th:text="${title}">NGO Anderlecht</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); }
+        .glass-dark { background: rgba(0,0,0,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
+        .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; }
     </style>
 </head>
 
 <body>
-    <nav th:fragment="nav" class="bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900 text-white shadow-lg">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <nav th:fragment="nav" class="fixed top-0 left-0 right-0 z-50 glass-dark">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <a th:href="@{/}" class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-lg font-bold">N</div>
-                <span class="text-xl font-semibold tracking-wide">NGO Anderlecht</span>
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-purple-500/30">N</div>
+                <span class="text-white font-semibold text-lg tracking-tight">NGO Anderlecht</span>
             </a>
-            <div class="flex items-center gap-8">
-                <a th:href="@{/}" class="text-sm font-medium hover:text-purple-200 transition-colors">Home</a>
-                <a th:href="@{/new}" class="text-sm font-medium hover:text-purple-200 transition-colors">Nieuw evenement</a>
-                <a th:href="@{/about}" class="text-sm font-medium hover:text-purple-200 transition-colors">Over ons</a>
-                <a th:href="@{/contact}" class="text-sm font-medium hover:text-purple-200 transition-colors">Contact</a>
+            <div class="flex items-center gap-1 glass rounded-full px-2 py-1">
+                <a th:href="@{/}" class="text-sm font-medium text-white/90 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all">Home</a>
+                <a th:href="@{/new}" class="text-sm font-medium text-white/90 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all">Nieuw</a>
+                <a th:href="@{/about}" class="text-sm font-medium text-white/90 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all">Over ons</a>
+                <a th:href="@{/contact}" class="text-sm font-medium text-white/90 hover:text-white px-4 py-2 rounded-full hover:bg-white/10 transition-all">Contact</a>
             </div>
         </div>
     </nav>
 
-    <footer th:fragment="footer" class="bg-gradient-to-r from-violet-900 via-purple-800 to-indigo-900 text-white text-center py-6 mt-12">
-        <p class="text-sm opacity-80">&copy; 2026 NGO Anderlecht. Alle rechten voorbehouden.</p>
+    <footer th:fragment="footer" class="border-t border-white/10 bg-black/40 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
+            <p class="text-white/40 text-sm">&copy; 2026 NGO Anderlecht</p>
+            <div class="flex gap-4">
+                <a href="#" class="text-white/40 hover:text-white/80 transition-colors text-sm">Privacy</a>
+                <a href="#" class="text-white/40 hover:text-white/80 transition-colors text-sm">Voorwaarden</a>
+            </div>
+        </div>
     </footer>
 </body>
 
