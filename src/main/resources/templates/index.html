@@ -6,15 +6,31 @@
 <body class="bg-gray-50 min-h-screen flex flex-col">
     <nav th:replace="~{layout :: nav}"></nav>
 
-    <main class="flex-grow">
-        <div class="bg-gradient-to-br from-purple-50 to-indigo-50 py-12">
+    <main class="flex-grow relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" class="w-full h-full">
+                <circle cx="200" cy="300" r="80" fill="#7c3aed" opacity="0.3"/>
+                <circle cx="400" cy="250" r="60" fill="#8b5cf6" opacity="0.3"/>
+                <circle cx="600" cy="350" r="90" fill="#6d28d9" opacity="0.3"/>
+                <circle cx="800" cy="280" r="70" fill="#a78bfa" opacity="0.3"/>
+                <circle cx="1000" cy="320" r="85" fill="#7c3aed" opacity="0.3"/>
+                <ellipse cx="300" cy="400" rx="120" ry="60" fill="#8b5cf6" opacity="0.2"/>
+                <ellipse cx="700" cy="450" rx="150" ry="70" fill="#6d28d9" opacity="0.2"/>
+                <ellipse cx="1000" cy="380" rx="100" ry="50" fill="#a78bfa" opacity="0.2"/>
+                <path d="M100,500 Q200,400 300,500 T500,500" stroke="#7c3aed" fill="none" stroke-width="3" opacity="0.2"/>
+                <path d="M400,480 Q500,380 600,480 T800,480" stroke="#8b5cf6" fill="none" stroke-width="3" opacity="0.2"/>
+                <path d="M700,520 Q800,420 900,520 T1100,520" stroke="#6d28d9" fill="none" stroke-width="3" opacity="0.2"/>
+            </svg>
+        </div>
+
+        <div class="bg-gradient-to-br from-purple-50 to-indigo-50 py-16 relative z-10">
             <div class="container mx-auto px-6">
-                <h1 class="text-4xl font-bold text-gray-900 mb-2">Evenementen</h1>
-                <p class="text-gray-600">Ontdek de laatste activiteiten van onze gemeenschap</p>
+                <h1 class="text-5xl font-bold text-gray-900 mb-3">Evenementen</h1>
+                <p class="text-gray-600 text-lg">Ontdek de laatste activiteiten van onze gemeenschap</p>
             </div>
         </div>
 
-        <div class="container mx-auto px-6 py-8">
+        <div class="container mx-auto px-6 py-8 relative z-10">
             <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
                 <table class="w-full">
                     <thead class="bg-gray-50 border-b border-gray-200">
